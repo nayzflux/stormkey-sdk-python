@@ -25,9 +25,9 @@ jobs:
 
       - name: Build package
         run: python setup.py sdist bdist_wheel
-        
+
       - name: Publish package
         env:
-          user: __token__
-          password: ${{ secrets.PIP_TOKEN }}
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PIP_TOKEN }}
         run: twine upload dist/*
